@@ -7,7 +7,7 @@ pipeline {
 
     environment {
         IMAGE_NAME = 'siku9786/todo-app'   // Docker image name
-        IMAGE_TAG = 'latest'               // Can change to BUILD_NUMBER if desired
+        IMAGE_TAG = '1.0.0'               // Can change to BUILD_NUMBER if desired
     }
 
     stages {
