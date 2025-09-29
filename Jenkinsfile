@@ -14,7 +14,7 @@ pipeline {
 
         stage('Checkout Code') {
             steps {
-                git branch: 'main', url: 'https://github.com/sikander-riaz/DevOps-assignment-1'
+                git branch: 'test', url: 'https://github.com/sikander-riaz/DevOps-assignment-1'
             }
         }
 
