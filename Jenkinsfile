@@ -66,22 +66,17 @@ pipeline {
                 }
             }
         }
+    } // The 'stages' block ends here
+
     post {
         always {
             echo 'Cleaning up Docker resources...'
             
             // Remove the image built
-            sh "docker rmi ${IMAGE_NAME} || true"
+            sh "docker rmi ${IMAGE_NAME}:${IMAGE_TAG} || true"
             
             // Prune dangling images, stopped containers, and unused networks
             sh "docker system prune -f --volumes"
         }
-    }
-
-
-
-        
-        
-
     }
 }
