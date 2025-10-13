@@ -2,11 +2,11 @@ pipeline {
     agent any
 
     tools {
-        nodejs 'nodejs20'  // Ensure this matches Jenkins tool name
+        nodejs 'nodejs24'  // Ensure this matches Jenkins tool name
     }
 
     environment {
-        IMAGE_NAME = 'siku9786/todo-app'   // Docker image name
+        IMAGE_NAME = 'siku86/todo-app'   // Docker image name
         IMAGE_TAG = '1.0.0'               // Can change to BUILD_NUMBER if desired
     }
 
@@ -66,5 +66,22 @@ pipeline {
                 }
             }
         }
+    post {
+        always {
+            echo 'Cleaning up Docker resources...'
+            
+            // Remove the image built
+            sh "docker rmi ${IMAGE_NAME} || true"
+            
+            // Prune dangling images, stopped containers, and unused networks
+            sh "docker system prune -f --volumes"
+        }
+    }
+
+
+
+        
+        
+
     }
 }
